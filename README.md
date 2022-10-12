@@ -34,13 +34,13 @@ project folder. Select the __main__.py file inside the cycle folder and click th
 ## Project Structure
 ---
 The project files and folders are organized as follows:
-```
+
 root                    (project root folder)
 +-- cycle               (directory holding all source code for game)
   +-- game              (directory holding source code for all classes)
   +-- __main__.py       (entry point for program)
 +-- README.md           (general info)
-
+```
 ## Required Technologies
 ---
 * Python 3.8.0
