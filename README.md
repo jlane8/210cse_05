@@ -1,4 +1,4 @@
-# Snake
+# Cycle
 Cycle is a game similar to the TRON game. In it, the players try to cut each other 
 off using cycles that leave a trail behind them. You play this game on a simulated 
 terminal, with a textual interface.
