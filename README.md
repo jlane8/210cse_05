@@ -2,7 +2,7 @@
 Cycle is a game similar to the TRON game. In it, the players try to cut each other 
 off using cycles that leave a trail behind them. You play this game on a simulated 
 terminal, with a textual interface.
----
+
 ## Rules
 Cycle is played according to the following:
 
@@ -15,7 +15,7 @@ Cycle is played according to the following:
     A "game over" message is displayed in the middle of the screen.
     The cycles turn white.
     Players keep moving and turning, but the game has ended.
----
+
 ## Getting Started
 Make sure you have Python 3.8.0 or newer and Raylib Python CFFI 3.7 installed and running on your machine. You can install Raylib Python CFFI by opening a terminal and running the following command.
 ```
@@ -28,7 +28,7 @@ python3 cycle (Everything else)
 ```
 You can also run the program from an IDE like Visual Studio Code. Start your IDE and open the 
 project folder. Select the __main__.py file inside the cycle folder and click the "run" icon.
----
+
 ## Project Structure
 The project files and folders are organized as follows:
 ```
@@ -38,10 +38,10 @@ root                    (project root folder)
   +-- __main__.py       (entry point for program)
 +-- README.md           (general info)
 ```
----
+
 ## Required Technologies
 * Python 3.8.0
 * Raylib Python CFFI 3.7
----
+
 ## Authors
 Jerry Lane and the authors of Snake
