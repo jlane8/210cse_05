@@ -39,6 +39,8 @@ class HandleCollisionsAction(Action):
             self._handle_food_collision(cast)
             self._handle_trail_collision(cast)
             self._handle_game_over(cast)
+        else:
+            self._handle_game_over(cast)
 
     # check for cycle collision with food
     def _handle_food_collision(self, cast):
