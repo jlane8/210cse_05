@@ -10,12 +10,13 @@ Cycle is played according to the following:
   Players can move up, down, left and right...
     Player one moves using the W, S, A and D keys.
     Player two moves using the I, K, J and L keys.
-  Each player's trail grows as they move.
+  Each player's trail grows as they collect the red fuel.
     Players try to maneuver so the opponent collides with their trail.
-  If a player collides with their opponent's trail...
+  If a player collides with any trail, their opponent's or their own:
     A "game over" message is displayed in the middle of the screen.
+    The winner is declared onscreen.
     The cycles turn white.
-    Players keep moving and turning, but the game has ended.
+    Players keep moving and may turn, but the game has ended.
 
 ## Getting Started
 Make sure you have Python 3.8.0 or newer and Raylib Python CFFI 3.7 installed and running on your machine. You can install Raylib Python CFFI by opening a terminal and running the following command.
