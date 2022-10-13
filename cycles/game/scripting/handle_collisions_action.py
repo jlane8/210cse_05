@@ -48,40 +48,58 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
+        # booleans to see if cycle crashed
+        red = False
+        blue = False
+        
         # get cycle actors from the cast
-        cycle = cast.get_first_actor("cycles")
-        cycle_2 = cast.get_second_actor("cycles")
+        first = cast.get_first_actor("cycles")
+        second = cast.get_second_actor("cycles")
         
         # get the cycles
-        head = cycle.get_trail()[0]
-        head_2 = cycle_2.get_trail()[0]
+        cycle_1 = first.get_trail()[0]
+        cycle_2 = second.get_trail()[0]
 
         # get the cycle trails
-        sections_1 = cycle.get_trail()[1:]
-        sections_2 = cycle_2.get_trail()[1:]
+        tracks_1 = first.get_trail()[1:]
+        tracks_2 = second.get_trail()[1:]
         
         # check to see if the cycles collided, if so, no one wins and game over
-        if head.get_position().equals(head_2.get_position()):
+        if cycle_1.get_position().equals(cycle_2.get_position()):
             self._is_game_over = True
-            self._is_winner = "No One"
+            blue = True
+            red = True
         
         # check for collision with cycle 1's trail, declare winner, game over
-        for section in sections_1:
-            if head.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
+        for track in tracks_1:
+            if cycle_1.get_position().equals(track.get_position()):
                 self._is_game_over = True
-                self._is_winner = "Blue"
-            elif head_2.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
+                red = True
+                if cycle_2.get_position().equals(track.get_position()):
+                    blue = True
+            elif cycle_2.get_position().equals(track.get_position()):
                 self._is_game_over = True
-                self._is_winner = "Red"
+                blue = True
 
         # check for collision with cycle 2's trail, declare winner, game over
-        for section in sections_2:
-            if head_2.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
+        for track in tracks_2:
+            if cycle_2.get_position().equals(track.get_position()):
                 self._is_game_over = True
-                self._is_winner = "Red"
-            elif head.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
+                blue = True
+                if cycle_1.get_position().equals(track.get_position()):
+                    red = True
+            elif cycle_1.get_position().equals(track.get_position()):
                 self._is_game_over = True
-                self._is_winner = "Blue"
+                red = True
+                
+        # based on cycle collision reports, declare winner
+        if blue and red:
+            self._is_winner = "No One"
+        elif red:
+            self._is_winner = "Blue"
+        elif blue:    
+            self._is_winner = "Red"
+        
         
     # if game over flag is set, this method handles everything that needs to happen
     def _handle_game_over(self, cast):
