@@ -71,9 +71,9 @@ class Cycle(Actor):
         if self._color == constants.RED:
             y = 90 # int(constants.MAX_Y / 6)
         else:
-            y = 270
+            y = 450
 
-        for i in range(constants.SNAKE_LENGTH):
+        for i in range(constants.TREAD_LENGTH):
             position = Point(x - i * constants.CELL_SIZE, y)
             velocity = Point(1 * constants.CELL_SIZE, 0)
             text = "8" if i == 0 else "#"
