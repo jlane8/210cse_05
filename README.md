@@ -1,7 +1,8 @@
-# Cycle
-Cycle is a game similar to the TRON game. In it, the players try to cut each other 
-off using cycles that leave a trail behind them. You play this game on a simulated 
-terminal, with a textual interface.
+# Cycles
+Cycles is a game similar to the TRON game. In it, the players try to cut each other 
+off using cycles that leave a trail behind them. If a player crosses any trail, either their
+own or their opponent's, they lose and the game is over. You play this game on a simulated 
+terminal, with a keyboard interface.
 
 ## Rules
 Cycle is played according to the following:
