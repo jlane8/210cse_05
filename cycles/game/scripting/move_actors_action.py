@@ -19,4 +19,3 @@ class MoveActorsAction(Action):
         self._actors = cast.get_all_actors()
         for actor in self._actors:
             actor.move_next()
-        return 
