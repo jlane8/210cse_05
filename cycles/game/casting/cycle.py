@@ -24,8 +24,21 @@ class Cycle(Actor):
 
     def move_next(self):
         # move all sections of the trail
-        for section in self._tread:
-            section.move_next()
+        # for section in self._tread:
+        #     section.move_next()
+        cycle = self._tread[0]
+        
+        # add new trail section
+        section = Actor()
+        section.set_position(cycle.get_position())
+        section.set_velocity(Point(0,0))
+        section.set_text("#")
+        section.set_color(constants.YELLOW)
+        self._tread.append(section)
+
+        # move cycle
+        cycle.move_next()
+
         # update velocities
         for i in range(len(self._tread) - 1, 0, -1):
             trailing = self._tread[i]
