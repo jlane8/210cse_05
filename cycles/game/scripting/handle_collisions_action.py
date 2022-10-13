@@ -17,6 +17,7 @@ class HandleCollisionsAction(Action):
     def __init__(self):
         """Constructs a new HandleCollisionsAction."""
         self._is_game_over = False
+        self._is_winner = ""
 
     def execute(self, cast, script):
         """Executes the handle collisions action.
@@ -64,12 +65,28 @@ class HandleCollisionsAction(Action):
         sections_1 = cycle.get_trail()[1:]
         sections_2 = cycle_2.get_trail()[1:]
         
+        # check to see if the cycles collided, if so, no one wins and game over
+        if head.get_position().equals(head_2.get_position()):
+            self._is_game_over = True
+            self._is_winner = "No One"
+        
+        # check for collision with cycle 1's trail, declare winner, game over
         for section in sections_1:
-            if head.get_position().equals(section.get_position()) or head_2.get_position().equals(section.get_position()):
+            if head.get_position().equals(section.get_position()):
                 self._is_game_over = True
+                self._is_winner = "Blue"
+            elif head_2.get_position().equals(section.get_position()):
+                self._is_game_over = True
+                self._is_winner = "Red"
+
+        # check for collision with cycle 2's trail, declare winner, game over
         for section in sections_2:
-            if head_2.get_position().equals(section.get_position()) or head.get_position().equals(section.get_position()):
+            if head_2.get_position().equals(section.get_position()):
                 self._is_game_over = True
+                self._is_winner = "Red"
+            elif head.get_position().equals(section.get_position()):
+                self._is_game_over = True
+                self._is_winner = "Blue"
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the snake and food white if the game is over.
@@ -91,6 +108,13 @@ class HandleCollisionsAction(Action):
             message.set_text("Game Over!")
             message.set_position(position)
             cast.add_actor("messages", message)
+
+
+            position = Point(x, int(y /2))
+            winner = Actor()
+            winner.set_text(f"{self._is_winner} Wins!")
+            winner.set_position(position)
+            cast.add_actor("messages", winner)
 
             for section in trail_1:
                 section.set_color(constants.WHITE)
