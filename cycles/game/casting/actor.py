@@ -3,10 +3,11 @@ file: actor.py
 authors: authors of Snake
 purpose: This class is the parent class for all child Actor classes.
 """
-# import the constants, Color, and Point
+# import the constants, Color, Velocity, and Point modules
 import constants
 from game.shared.color import Color
 from game.shared.point import Point
+from game.shared.velocity import Velocity
 
 # class declaration
 class Actor:
@@ -23,19 +24,25 @@ class Actor:
         _velocity (Point): The speed and direction.
     """
 
+    # default constructor
     def __init__(self):
-        """Constructs a new Actor."""
+        """Constructs a new Actor.
+        
+        Parameters: none
+        Return: none
+        """
         self._text = ""
         self._font_size = 15
         self._color = Color(255, 255, 255)
         self._position = Point(0, 0)
-        self._velocity = Point(0, 0)
+        self._velocity = Velocity()
 
+    # method to return current color
     def get_color(self):
         """Gets the actor's color as a tuple of three ints (r, g, b).
         
-        Returns:
-            Color: The actor's text color.
+        Parameters: none
+        Returns: The actor's text color. (Color)
         """
         return self._color
 
@@ -121,4 +128,4 @@ class Actor:
         Args:
             velocity (Point): The given velocity.
         """
-        self._velocity = velocity
+        self._velocity.set_velocity(velocity)
