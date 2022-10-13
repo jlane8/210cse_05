@@ -67,19 +67,19 @@ class HandleCollisionsAction(Action):
         
         # check for collision with cycle 1's trail, declare winner, game over
         for section in sections_1:
-            if head.get_position().equals(section.get_position()):
+            if head.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
                 self._is_game_over = True
                 self._is_winner = "Blue"
-            elif head_2.get_position().equals(section.get_position()):
+            elif head_2.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
                 self._is_game_over = True
                 self._is_winner = "Red"
 
         # check for collision with cycle 2's trail, declare winner, game over
         for section in sections_2:
-            if head_2.get_position().equals(section.get_position()):
+            if head_2.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
                 self._is_game_over = True
                 self._is_winner = "Red"
-            elif head.get_position().equals(section.get_position()):
+            elif head.get_position().equals(section.get_position()) and not self._is_game_over and self._is_winner != "No One":
                 self._is_game_over = True
                 self._is_winner = "Blue"
         
@@ -99,6 +99,9 @@ class HandleCollisionsAction(Action):
             # get the trails from both cycles
             trail_1 = cycles[0].get_trail()
             trail_2 = cycles[1].get_trail()
+
+            # get the food from the cast
+            food = cast.get_first_actor("foods")
 
             # set x and y coords for game over message
             x = int(constants.MAX_X / 2)
