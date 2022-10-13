@@ -27,7 +27,7 @@ class HandleCollisionsAction(Action):
         """
         if not self._is_game_over:
             self._handle_food_collision(cast)
-            self._handle_segment_collision(cast)
+            self._handle_trail_collision(cast)
             self._handle_game_over(cast)
 
     def _handle_food_collision(self, cast):
@@ -36,32 +36,40 @@ class HandleCollisionsAction(Action):
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        score = cast.get_first_actor("scores")
         food = cast.get_first_actor("foods")
-        cycles = cast.get_actors("cycle")
-        player_1 = cycles[0].get_head()
-        player_2 = cycles[1].get_head()
+        cycles = cast.get_actors("cycles")
+        head = cycles[0].get_head()
+        head_2 = cycles[1].get_head()
 
-        # if head.get_position().equals(food.get_position()):
-        #     points = food.get_points()
-        #     snake.grow_tail(points)
-        #     score.add_points(points)
-        #     food.reset()
+        if head.get_position().equals(food.get_position()):
+            points = food.get_points()
+            cycles[0].grow_trail(points)
+            food.reset()
+
+        if head_2.get_position().equals(food.get_position()):
+            points = food.get_points()
+            cycles[1].grow_trail(points)
+            food.reset()
     
-    def _handle_segment_collision(self, cast):
+    def _handle_trail_collision(self, cast):
         """Sets the game over flag if the snake collides with one of its segments.
         
         Args:
             cast (Cast): The cast of Actors in the game.
         """
-        # snake = cast.get_first_actor("snakes")
-        # head = snake.get_segments()[0]
-        # segments = snake.get_segments()[1:]
+        cycle = cast.get_first_actor("cycles")
+        cycle_2 = cast.get_second_actor("cycles")
+        head = cycle.get_trail()[0]
+        head_2 = cycle_2.get_trail()[0]
+        sections_1 = cycle.get_trail()[1:]
+        sections_2 = cycle_2.get_trail()[1:]
         
-        # for segment in segments:
-        #     if head.get_position().equals(segment.get_position()):
-        #         self._is_game_over = True
-        pass
+        for section in sections_1:
+            if head.get_position().equals(section.get_position()) or head_2.get_position().equals(section.get_position()):
+                self._is_game_over = True
+        for section in sections_2:
+            if head_2.get_position().equals(section.get_position()) or head.get_position().equals(section.get_position()):
+                self._is_game_over = True
         
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the snake and food white if the game is over.
@@ -70,11 +78,10 @@ class HandleCollisionsAction(Action):
             cast (Cast): The cast of Actors in the game.
         """
         if self._is_game_over:
-            player_1 = cast.get_first_actor("cycle")
-            player_2 = cast.get_actors("cycle")[1]
-            segments_1 = player_1.get_segments()
-            segments_2 = player_2.get_segments()
-            #food = cast.get_first_actor("foods")
+            cycles = cast.get_actors("cycles")
+            trail_1 = cycles[0].get_trail()
+            trail_2 = cycles[1].get_trail()
+            food = cast.get_first_actor("foods")
 
             x = int(constants.MAX_X / 2)
             y = int(constants.MAX_Y / 2)
@@ -85,9 +92,8 @@ class HandleCollisionsAction(Action):
             message.set_position(position)
             cast.add_actor("messages", message)
 
-            for segment in segments_1:
-                segment.set_color(constants.WHITE)
-            for segment in segments_2:
-                segment.set_color(constants.WHITE)
-            
-            #food.set_color(constants.WHITE)
+            for section in trail_1:
+                section.set_color(constants.WHITE)
+            for section in trail_2:
+                section.set_color(constants.WHITE)
+            food.set_color(constants.WHITE)
