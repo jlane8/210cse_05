@@ -1,8 +1,14 @@
+"""
+file: actor.py
+authors: authors of Snake
+purpose: This class is the parent class for all child Actor classes.
+"""
+# import the constants, Color, and Point
 import constants
 from game.shared.color import Color
 from game.shared.point import Point
 
-
+# class declaration
 class Actor:
     """A visible, moveable thing that participates in the game. 
     
