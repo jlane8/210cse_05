@@ -9,7 +9,7 @@ from game.shared.point import Point
 from game.scripting.action import Action
 
 # class declaration
-class Velocity(Action):
+class Velocity(Point):
     """
     A record of Action direction and movement. 
     
@@ -34,7 +34,6 @@ class Velocity(Action):
         Attributes: super().__init__() - parent attributes
                     _velocity - holds the momentum of the object, default is at rest
         """
-        super().__init__()
         self._velocity = Point(0, 0)
 
     # method to get current velocity
