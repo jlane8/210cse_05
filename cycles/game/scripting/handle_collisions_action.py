@@ -114,8 +114,7 @@ class HandleCollisionsAction(Action):
             self._is_winner = "Blue"
         elif blue:    
             self._is_winner = "Red"
-        
-        
+          
     # if game over flag is set, this method handles everything that needs to happen
     def _handle_game_over(self, cast):
         """Shows the 'game over' message and turns the snake and food white if the game is over.
