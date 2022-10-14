@@ -1,6 +1,6 @@
 """
 file: actor.py
-authors: authors of Snake
+authors: authors of Snake, Jerry Lane
 purpose: This class is the parent class for all child Actor classes.
 """
 # import the constants, Color, Velocity, and Point modules
