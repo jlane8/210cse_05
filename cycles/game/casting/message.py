@@ -48,21 +48,3 @@ class Message(Actor):
         Return: nothing
         """
         self._message = message
-    
-    # method to get a message
-    def get_color(self):
-        """Returns the color of the message text.
-        
-        Parameters: none
-        Return: _color (String) - current message stored color
-        """
-        return self._color
-
-    # method to set the message color
-    def set_color(self, color):
-        """Sets the color of the stored message.
-        
-        Parameters: color (Color) - color to be stored and used with message
-        Return: nothing
-        """
-        self._color = color
