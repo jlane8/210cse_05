@@ -5,7 +5,7 @@ own or their opponent's, they lose and the game is over. You play this game on a
 terminal, with a keyboard interface.
 
 ## Rules
-Cycle is played according to the following:
+Cycles is played according to the following:
 
   Players can move up, down, left and right...
     Player one moves using the W, S, A and D keys.
