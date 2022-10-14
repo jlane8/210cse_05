@@ -48,7 +48,7 @@ class Point:
         """
         return self._x == other.get_x() and self._y == other.get_y()
 
-    # method to return the x component of the Point
+    # method to return the x component of the Velocity
     def get_x(self):
         """Gets the horizontal distance.
         
@@ -57,6 +57,7 @@ class Point:
         """
         return self._x
 
+    # method to return the y component of the Velocity
     def get_y(self):
         """Gets the vertical distance.
         
@@ -65,6 +66,7 @@ class Point:
         """
         return self._y
 
+    # method to get reverse point
     def reverse(self):
         """Reverses the point by inverting both x and y values.
 
