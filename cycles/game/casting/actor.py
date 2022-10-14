@@ -128,7 +128,7 @@ class Actor:
         Parameters: text (Char) - The Actor's new text value.
         Returns: nothing
         """
-        self._text = text
+        self._text = text[0]
 
     # method to set Actor's new velocity
     def set_velocity(self, velocity):
