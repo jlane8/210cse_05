@@ -40,6 +40,7 @@ class Message(Actor):
         """
         return self._message
 
+    # method to set a message
     def set_text(self, message):
         """Sets the message to be stored in the private variable, _message
         
