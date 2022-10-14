@@ -21,7 +21,7 @@ class Actor:
         _font_size (int): The font size to use.
         _color (Color): The color of the text.
         _position (Point): The screen coordinates.
-        _velocity (Point): The speed and direction.
+        _velocity (Velocity): The speed and direction.
     """
 
     # default constructor
