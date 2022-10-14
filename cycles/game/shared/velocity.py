@@ -11,9 +11,9 @@ from game.scripting.action import Action
 # class declaration
 class Velocity(Action):
     """
-    A record of Action direction of movement. 
+    A record of Action direction and movement. 
     
-    The responsibility of Velocity is to keep track of the direction the Actor is moving.
+    The responsibility of Velocity is to keep track of the momentum the Actor is using to move.
     Velocity stored here is limited to x and y momentum. The z axis is not represented.
     It contains methods to get and set the Actor's velocity as well as to get the x and y 
     components of its velocity.
@@ -31,7 +31,8 @@ class Velocity(Action):
         Parameters: none
         Return: nothing
 
-        Attributes: _velocity - holds the momentum of the object
+        Attributes: super().__init__() - parent attributes
+                    _velocity - holds the momentum of the object, default is at rest
         """
         super().__init__()
         self._velocity = Point(0, 0)

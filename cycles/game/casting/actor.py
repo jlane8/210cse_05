@@ -39,93 +39,102 @@ class Actor:
 
     # method to return current color
     def get_color(self):
-        """Gets the actor's color as a tuple of three ints (r, g, b).
+        """Gets the Actor's color as a tuple of three ints (r, g, b).
         
         Parameters: none
-        Returns: The actor's text color. (Color)
+        Returns: _color (Color) - The Actor's text color. 
         """
         return self._color
 
+    # method to return object font size
     def get_font_size(self):
-        """Gets the actor's font size.
+        """Gets the Actor's font size.
         
-        Returns:
-            Point: The actor's font size.
+        Paramters: none
+        Returns: _font_size (Int) - The actor's font size.
         """
         return self._font_size
 
+    # method to return position
     def get_position(self):
-        """Gets the actor's position in 2d space.
+        """Gets the Actor's position in 2d space.
         
-        Returns:
-            Point: The actor's position in 2d space.
+        Parameters: none
+        Returns: _position (Point) - The Actor's position in 2d space.
         """
         return self._position
     
+    # method to get text representation of object
     def get_text(self):
-        """Gets the actor's textual representation.
+        """Gets the Actor's textual representation.
         
-        Returns:
-            string: The actor's textual representation.
+        Parameters: none
+        Returns: _text (Char) - The Actor's textual representation.
         """
         return self._text
 
+    # method to return velocity of object
     def get_velocity(self):
-        """Gets the actor's speed and direction.
+        """Gets the Actor's speed and direction.
         
-        Returns:
-            Point: The actor's speed and direction.
+        Parameters: none
+        Returns: _velocity (Velocity) - The Actor's speed and direction.
         """
         return self._velocity
     
+    # method to move Actor
     def move_next(self):
-        """Moves the actor to its next position according to its velocity. Will wrap the position 
+        """Moves the Actor to its next position according to its velocity. Will wrap the position 
         from one side of the screen to the other when it reaches the given maximum x and y values.
         
-        Args:
-            max_x (int): The maximum x value.
-            max_y (int): The maximum y value.
+        Parameters: none
+        Returns: nothing
         """
         x = (self._position.get_x() + self._velocity.get_x()) % constants.MAX_X
         y = (self._position.get_y() + self._velocity.get_y()) % constants.MAX_Y
         self._position = Point(x, y)
 
+    # method to set object color
     def set_color(self, color):
-        """Updates the color to the given one.
+        """Updates the Actor's color to the passed one.
         
-        Args:
-            color (Color): The given color.
+        Parameters: color (Color) - The new color of the Actor.
+        Returns: nothing
         """
         self._color = color
 
+    # method to set Actor's position
     def set_position(self, position):
-        """Updates the position to the given one.
+        """Updates the Actor's position to the one passed.
         
-        Args:
-            position (Point): The given position.
+        Paramters: position (Point) - The Actor's new position.
+        Returns: nothing
         """
         self._position = position
     
+    # method to set the Actor's font size
     def set_font_size(self, font_size):
         """Updates the font size to the given one.
         
-        Args:
-            font_size (int): The given font size.
+        Paramters: font_size (Int) - The new font size.
+        Returns: nothing
         """
         self._font_size = font_size
     
+    # method to set the text representation of the Actor
     def set_text(self, text):
-        """Updates the text to the given value.
+        """Updates the text representation to the given value.
         
-        Args:
-            text (string): The given value.
+        Parameters: text (Char) - The Actor's new text value.
+        Returns: nothing
         """
         self._text = text
 
+    # method to set Actor's new velocity
     def set_velocity(self, velocity):
-        """Updates the velocity to the given one.
+        """Updates the velocity to the one passed in.
         
-        Args:
-            velocity (Point): The given velocity.
+        Parameters: velocity (Velocity) - The Actor's new velocity.
+        Returns: nothing
         """
         self._velocity.set_velocity(velocity)

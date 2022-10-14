@@ -15,7 +15,8 @@ class Message(Actor):
     getting and setting a message.
 
     Attributes:
-        _message (string): A text message which this child Actor will hold.
+        auper().__init__ attributes
+        _message (String): A text message which this child Actor will hold.
         _color (Color): The color of the text to be displayed, default WHITE.
     """
 
@@ -26,11 +27,12 @@ class Message(Actor):
         Parameters: message (String) - text to be stored
         Return: nothing
         """
+        super().__init__()
         self._message = message
         self._color = Color(255, 255, 255)
         
     # method to get a message
-    def get_message(self):
+    def get_text(self):
         """Adds an actor to the given group.
         
         Parameters: none
@@ -38,7 +40,7 @@ class Message(Actor):
         """
         return self._message
 
-    def set_message(self, message):
+    def set_text(self, message):
         """Sets the message to be stored in the private variable, _message
         
         Parameters: message (String) - message to be held until ready for delivery
@@ -51,11 +53,12 @@ class Message(Actor):
         """Returns the color of the message text.
         
         Parameters: none
-        Return: _color (String) - current stored color
+        Return: _color (String) - current message stored color
         """
         return self._color
 
-    def set_message(self, color):
+    # method to set the message color
+    def set_color(self, color):
         """Sets the color of the stored message.
         
         Parameters: color (Color) - color to be stored and used with message
